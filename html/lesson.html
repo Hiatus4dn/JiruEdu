@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson - JiruEdu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="content-page">
+    <header class="app-header">
+        <div class="header-left">
+            <a class="header-link" href="/subject.html">Back</a>
+        </div>
+        <h3 id="lesson-page-title">Lesson</h3>
+        <div class="header-actions">
+            <button type="button" class="btn btn-outline header-button" data-logout>Logout</button>
+        </div>
+    </header>
+
+    <main class="lesson-content">
+        <article class="lesson-card">
+            <h1 id="lesson-title">Lesson Title</h1>
+            <p id="lesson-meta" class="lesson-meta">Subject | Grade</p>
+
+            <div class="lesson-image">
+                <div id="lesson-image-label">Lesson graphic</div>
+            </div>
+
+            <div id="lesson-text" class="lesson-text"></div>
+            <p id="lesson-status" class="status-banner" aria-live="polite"></p>
+        </article>
+    </main>
+
+    <footer class="lesson-footer">
+        <a href="/subject.html" class="btn btn-outline">Choose Another Subject</a>
+        <button id="complete-lesson-button" type="button" class="btn btn-primary">Mark as Completed</button>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - JiruEdu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-header">
+            <h2>Create Account</h2>
+            <p>Register as a student or teacher, choose your grade and subjects, then continue to your dashboard.</p>
+        </div>
+
+        <form id="signup-form" class="auth-form">
+            <div class="form-group">
+                <label>Account Type</label>
+                <div class="role-selector">
+                    <label class="radio-card">
+                        <input type="radio" name="signup-role" value="student" checked>
+                        <span>Student</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="signup-role" value="teacher">
+                        <span>Teacher</span>
+                    </label>
+                </div>
+                <p id="signup-role-help" class="field-help">Students get a learning dashboard. Teachers get content and class tools.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-name">Display Name</label>
+                <input type="text" id="signup-name" placeholder="Your full name" autocomplete="name" required>
+                <p id="signup-name-help" class="field-help">Use the name you want teachers and admins to see.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-username">Username</label>
+                <input type="text" id="signup-username" placeholder="Choose a username" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+                <p id="signup-username-help" class="field-help">3-24 lowercase letters, numbers, dots, underscores, or hyphens.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-grade-level">Grade Level</label>
+                <select id="signup-grade-level" class="form-control" required>
+                    <option value="">Loading grade levels...</option>
+                </select>
+                <p id="signup-grade-help" class="field-help">Your grade level helps personalize lessons and quizzes.</p>
+            </div>
+
+            <div class="form-group">
+                <label id="signup-subject-label">Preferred Subjects</label>
+                <div id="signup-subject-list" class="checkbox-grid"></div>
+                <p id="signup-subject-help" class="field-help">Pick at least one subject to build your learning plan.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-password">Password</label>
+                <div class="password-field">
+                    <input type="password" id="signup-password" placeholder="Create a password" autocomplete="new-password" required>
+                    <button type="button" class="password-toggle" data-toggle-password="signup-password" aria-label="Show password">Show</button>
+                </div>
+                <div class="password-strength">
+                    <div id="signup-password-strength-bar" class="password-strength-bar"></div>
+                </div>
+                <ul class="password-rule-list">
+                    <li id="rule-length" class="password-rule">At least 8 characters</li>
+                    <li id="rule-lower" class="password-rule">One lowercase letter</li>
+                    <li id="rule-upper" class="password-rule">One uppercase letter</li>
+                    <li id="rule-number" class="password-rule">One number</li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-confirm-password">Confirm Password</label>
+                <div class="password-field">
+                    <input type="password" id="signup-confirm-password" placeholder="Repeat your password" autocomplete="new-password" required>
+                    <button type="button" class="password-toggle" data-toggle-password="signup-confirm-password" aria-label="Show password">Show</button>
+                </div>
+                <p id="signup-confirm-help" class="field-help">Re-enter the same password to continue.</p>
+            </div>
+
+            <button id="signup-submit" type="submit" class="btn btn-primary btn-block">Create Account</button>
+            <p id="signup-status" class="status-banner" aria-live="polite"></p>
+        </form>
+
+        <div class="auth-footer">
+            <p class="text-center">Already registered? <a href="/login.html">Back to login</a></p>
+        </div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

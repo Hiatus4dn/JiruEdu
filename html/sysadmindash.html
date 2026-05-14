@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Admin Dashboard - JiruEdu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dashboard-page">
+    <header class="app-header">
+        <div class="header-left">
+            <h3>System Administration</h3>
+        </div>
+        <div class="header-actions">
+            <div class="user-avatar" data-session-avatar>SA</div>
+            <button type="button" class="btn btn-outline header-button" data-logout>Logout</button>
+        </div>
+    </header>
+
+    <main class="dashboard-content admin-dashboard">
+        <section class="welcome-section">
+            <h2>System Operations</h2>
+            <p>Manage RBAC, audit logs, and data protection for the JiruEdu platform.</p>
+        </section>
+
+        <section class="stat-grid">
+            <article class="stat-card">
+                <h4>Total Users</h4>
+                <strong id="system-total-users">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Teachers</h4>
+                <strong id="system-total-teachers">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Admin Accounts</h4>
+                <strong id="system-total-admins">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Audit Events</h4>
+                <strong id="system-total-audit">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Backups</h4>
+                <strong id="system-backup-count">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Database Size</h4>
+                <strong id="system-db-size">0 B</strong>
+            </article>
+        </section>
+
+        <p id="system-dashboard-status" class="status-banner" aria-live="polite"></p>
+
+        <section class="admin-layout">
+            <article class="admin-panel admin-panel-wide" id="system-users">
+                <div class="panel-header">
+                    <div>
+                        <h3>Role-Based Access Control</h3>
+                        <p>Update roles, grade mappings, and subject permissions for any account.</p>
+                    </div>
+                </div>
+                <div id="system-user-list" class="admin-list"></div>
+            </article>
+
+            <article class="admin-panel" id="system-backups">
+                <div class="panel-header">
+                    <div>
+                        <h3>Database Backups</h3>
+                        <p>Create and review backup snapshots for recovery planning.</p>
+                    </div>
+                </div>
+                <button id="system-backup-create" type="button" class="btn btn-primary">Create Database Backup</button>
+                <div id="system-backup-list" class="admin-list"></div>
+            </article>
+
+            <article class="admin-panel" id="system-permissions">
+                <div class="panel-header">
+                    <div>
+                        <h3>Role Permissions</h3>
+                        <p>Reference the current permission mapping for all supported roles.</p>
+                    </div>
+                </div>
+                <div id="system-permission-list" class="admin-list"></div>
+            </article>
+
+            <article class="admin-panel admin-panel-wide" id="system-audit">
+                <div class="panel-header">
+                    <div>
+                        <h3>Audit Trail</h3>
+                        <p>Track key platform actions such as logins, content updates, reviews, and backups.</p>
+                    </div>
+                </div>
+                <div id="system-audit-list" class="admin-list"></div>
+            </article>
+        </section>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

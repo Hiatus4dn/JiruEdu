@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Homework - JiruEdu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="form-page">
+    <header class="app-header">
+        <div class="header-left">
+            <h3>Upload Homework</h3>
+        </div>
+        <div class="header-actions">
+            <a class="header-link" href="/student_dashboard.html">Dashboard</a>
+            <button type="button" class="btn btn-outline header-button" data-logout>Logout</button>
+        </div>
+    </header>
+
+    <main class="form-container">
+        <form id="homework-form" class="upload-form">
+            <div class="form-group">
+                <label for="homework-subject">Subject</label>
+                <select id="homework-subject" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="homework-title">Assignment Title</label>
+                <input id="homework-title" type="text" placeholder="Example: Algebra Worksheet" required>
+            </div>
+
+            <div class="form-group">
+                <label for="homework-file">Upload File</label>
+                <div class="file-upload-box">
+                    <input type="file" id="homework-file" required>
+                    <label for="homework-file" class="btn btn-outline">Choose File</label>
+                </div>
+                <small class="helper-text">Accepted size: up to 5 MB.</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit Homework</button>
+            <p id="homework-status" class="status-banner" aria-live="polite"></p>
+        </form>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

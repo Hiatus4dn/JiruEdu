@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - JiruEdu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dashboard-page">
+    <header class="app-header">
+        <div class="header-left">
+            <h3>Teacher Dashboard</h3>
+        </div>
+        <div class="header-actions">
+            <div class="user-avatar" data-session-avatar>TD</div>
+            <button type="button" class="btn btn-outline header-button" data-logout>Logout</button>
+        </div>
+    </header>
+
+    <main class="dashboard-content admin-dashboard">
+        <section class="welcome-section">
+            <h2>Hello, <span data-session-name>Teacher</span></h2>
+            <p id="teacher-welcome-text">Loading teaching overview...</p>
+        </section>
+
+        <section class="stat-grid">
+            <article class="stat-card">
+                <h4>Assigned Subjects</h4>
+                <strong id="teacher-assigned-subjects">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Tracked Students</h4>
+                <strong id="teacher-tracked-students">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Scheduled Quizzes</h4>
+                <strong id="teacher-scheduled-quizzes">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Average Score</h4>
+                <strong id="teacher-average-score">0%</strong>
+            </article>
+        </section>
+
+        <section class="admin-layout">
+            <article class="admin-panel" id="teacher-students">
+                <div class="panel-header">
+                    <div>
+                        <h3>Schedule Quiz</h3>
+                        <p>Assign quizzes with a subject, grade, and deadline.</p>
+                    </div>
+                </div>
+
+                <form id="teacher-schedule-form" class="auth-form compact-form">
+                    <div class="form-group">
+                        <label for="teacher-schedule-subject">Subject</label>
+                        <select id="teacher-schedule-subject" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-schedule-title">Quiz Title</label>
+                        <input type="text" id="teacher-schedule-title" placeholder="Quarter 1 Review" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-schedule-grade">Grade Level</label>
+                        <input type="text" id="teacher-schedule-grade" placeholder="Grade 10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-schedule-due-at">Deadline</label>
+                        <input type="datetime-local" id="teacher-schedule-due-at" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-schedule-description">Instructions</label>
+                        <textarea id="teacher-schedule-description" rows="3" placeholder="Add optional review instructions."></textarea>
+                    </div>
+                    <button id="teacher-schedule-submit" type="submit" class="btn btn-primary">Schedule Quiz</button>
+                    <p id="teacher-schedule-status" class="status-banner" aria-live="polite"></p>
+                </form>
+            </article>
+
+            <article class="admin-panel" id="teacher-support">
+                <div class="panel-header">
+                    <div>
+                        <h3>Support Students</h3>
+                        <p>Send short notes to students that appear on their progress dashboard.</p>
+                    </div>
+                </div>
+
+                <form id="teacher-note-form" class="auth-form compact-form">
+                    <div class="form-group">
+                        <label for="teacher-note-student">Student</label>
+                        <select id="teacher-note-student" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-note-subject">Subject</label>
+                        <select id="teacher-note-subject" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-note-message">Support Note</label>
+                        <textarea id="teacher-note-message" rows="4" placeholder="Explain what the student should review next." required></textarea>
+                    </div>
+                    <button id="teacher-note-submit" type="submit" class="btn btn-primary">Send Support Note</button>
+                    <p id="teacher-note-status" class="status-banner" aria-live="polite"></p>
+                </form>
+            </article>
+
+            <article class="admin-panel" id="teacher-performance">
+                <div class="panel-header">
+                    <div>
+                        <h3>Class Performance</h3>
+                        <p>Track assigned students and identify who needs more support.</p>
+                    </div>
+                </div>
+                <div id="teacher-student-list" class="admin-list"></div>
+            </article>
+
+            <article class="admin-panel admin-panel-wide" id="content-editor">
+                <div class="panel-header">
+                    <div>
+                        <h3>Content Editor</h3>
+                        <p>Manage the lessons and quiz feedback for subjects assigned to your account.</p>
+                    </div>
+                </div>
+
+                <div class="admin-editor-toolbar">
+                    <div class="form-group">
+                        <label for="admin-subject-select">Choose Subject</label>
+                        <select id="admin-subject-select" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="ai-tool-panel">
+                    <div>
+                        <h4>AI Quiz Generator</h4>
+                        <p>Generate a draft quiz for a topic, then review it before saving.</p>
+                    </div>
+                    <div class="ai-tool-grid">
+                        <div class="form-group">
+                            <label for="ai-quiz-topic">Topic</label>
+                            <input type="text" id="ai-quiz-topic" placeholder="Photosynthesis">
+                        </div>
+                        <div class="form-group">
+                            <label for="ai-quiz-count">Questions</label>
+                            <input type="number" id="ai-quiz-count" min="1" max="12" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label>Types</label>
+                            <div id="ai-question-types" class="inline-checkboxes">
+                                <label><input type="checkbox" value="multiple_choice" checked> Multiple choice</label>
+                                <label><input type="checkbox" value="true_false" checked> True / false</label>
+                                <label><input type="checkbox" value="short_answer"> Short answer</label>
+                            </div>
+                        </div>
+                        <button id="ai-generate-quiz-button" type="button" class="btn btn-outline">Generate Draft</button>
+                    </div>
+                </div>
+
+                <form id="admin-subject-editor-form" class="auth-form admin-editor-form">
+                    <div class="admin-editor-grid">
+                        <div class="form-group">
+                            <label for="admin-edit-name">Subject Name</label>
+                            <input type="text" id="admin-edit-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-edit-lesson-grade">Grade Label</label>
+                            <input type="text" id="admin-edit-lesson-grade" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin-edit-summary">Summary</label>
+                        <textarea id="admin-edit-summary" rows="3" required></textarea>
+                    </div>
+
+                    <div class="admin-editor-grid">
+                        <div class="form-group">
+                            <label for="admin-edit-lesson-title">Lesson Title</label>
+                            <input type="text" id="admin-edit-lesson-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-edit-lesson-image-label">Lesson Image Label</label>
+                            <input type="text" id="admin-edit-lesson-image-label" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin-edit-lesson-body">Lesson Paragraphs</label>
+                        <textarea id="admin-edit-lesson-body" rows="8" placeholder="Separate paragraphs with a blank line." required></textarea>
+                    </div>
+
+                    <div class="panel-header">
+                        <div>
+                            <h4>Quiz Questions</h4>
+                            <p>Include explanations so students see feedback after every quiz.</p>
+                        </div>
+                        <button id="admin-add-question" type="button" class="btn btn-outline panel-action">Add Question</button>
+                    </div>
+
+                    <div id="admin-quiz-editor" class="quiz-editor"></div>
+
+                    <button id="admin-subject-save" type="submit" class="btn btn-primary">Save Subject Content</button>
+                    <p id="admin-subject-editor-status" class="status-banner" aria-live="polite"></p>
+                </form>
+            </article>
+
+            <article class="admin-panel admin-panel-wide" id="teacher-schedules">
+                <div class="panel-header">
+                    <div>
+                        <h3>Scheduled Quizzes</h3>
+                        <p>Review the active assessment flow for your classes.</p>
+                    </div>
+                </div>
+                <div id="teacher-schedule-list" class="admin-list"></div>
+            </article>
+
+            <article class="admin-panel admin-panel-wide" id="teacher-ai-analytics">
+                <div class="panel-header">
+                    <div>
+                        <h3>AI Analytics and Recommendations</h3>
+                        <p>Class-level risks and suggested interventions based on assigned students.</p>
+                    </div>
+                </div>
+                <div id="teacher-ai-insight" class="ai-insight-panel"></div>
+            </article>
+        </section>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

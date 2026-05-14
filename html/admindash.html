@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - JiruEdu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dashboard-page">
+    <header class="app-header">
+        <div class="header-left">
+            <h3>School Administrator</h3>
+        </div>
+        <div class="header-actions">
+            <div class="user-avatar" data-session-avatar>AD</div>
+            <button type="button" class="btn btn-outline header-button" data-logout>Logout</button>
+        </div>
+    </header>
+
+    <main class="dashboard-content admin-dashboard">
+        <section class="welcome-section">
+            <h2>Administrator Dashboard</h2>
+            <p id="admin-welcome-text">Loading admin overview...</p>
+        </section>
+
+        <section class="stat-grid">
+            <article class="stat-card">
+                <h4>Total Students</h4>
+                <strong id="admin-total-students">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Total Teachers</h4>
+                <strong id="admin-total-teachers">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Total Subjects</h4>
+                <strong id="admin-total-subjects">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Quiz Questions</h4>
+                <strong id="admin-total-questions">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Total Submissions</h4>
+                <strong id="admin-total-submissions">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Pending Review</h4>
+                <strong id="admin-pending-submissions">0</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Grade Levels</h4>
+                <strong id="admin-total-grades">0</strong>
+            </article>
+        </section>
+
+        <p id="admin-dashboard-status" class="status-banner" aria-live="polite"></p>
+
+        <section class="admin-layout">
+            <article class="admin-panel" id="accounts">
+                <div class="panel-header">
+                    <div>
+                        <h3>Create School Account</h3>
+                        <p>Create student, teacher, or parent accounts with grade-level and subject assignments.</p>
+                    </div>
+                </div>
+
+                <form id="admin-student-form" class="auth-form compact-form">
+                    <div class="form-group">
+                        <label for="admin-student-name">Display Name</label>
+                        <input type="text" id="admin-student-name" placeholder="Student full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-student-username">Username</label>
+                        <input type="text" id="admin-student-username" placeholder="student.username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-student-password">Temporary Password</label>
+                        <div class="password-field">
+                            <input type="password" id="admin-student-password" placeholder="Create a strong password" required>
+                            <button type="button" class="password-toggle" data-toggle-password="admin-student-password" aria-label="Show password">Show</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-user-role">Role</label>
+                        <select id="admin-user-role" class="form-control">
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="parent">Parent</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-user-grade">Grade Level</label>
+                        <select id="admin-user-grade" class="form-control">
+                            <option value="">Loading grade levels...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Assigned Subjects</label>
+                        <div id="admin-user-subjects" class="checkbox-grid"></div>
+                    </div>
+                    <button id="admin-student-submit" type="submit" class="btn btn-primary">Create Account</button>
+                    <p id="admin-student-status" class="status-banner" aria-live="polite"></p>
+                </form>
+            </article>
+
+            <article class="admin-panel" id="school-directory">
+                <div class="panel-header">
+                    <div>
+                        <h3>School Directory</h3>
+                        <p>Monitor students, teachers, and other school-managed accounts.</p>
+                    </div>
+                </div>
+
+                <div id="admin-student-list" class="admin-list"></div>
+            </article>
+
+            <article class="admin-panel" id="create-subject">
+                <div class="panel-header">
+                    <div>
+                        <h3>Create Subject</h3>
+                        <p>Start a new subject shell, then fill in the lesson and quiz editor.</p>
+                    </div>
+                </div>
+
+                <form id="admin-subject-create-form" class="auth-form compact-form">
+                    <div class="form-group">
+                        <label for="admin-new-subject-id">Subject Id</label>
+                        <input type="text" id="admin-new-subject-id" placeholder="computer-science" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-new-subject-name">Subject Name</label>
+                        <input type="text" id="admin-new-subject-name" placeholder="Computer Science" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-new-subject-summary">Summary</label>
+                        <textarea id="admin-new-subject-summary" rows="3" placeholder="Describe the subject in one concise paragraph." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-new-subject-grade">Grade Level</label>
+                        <select id="admin-new-subject-grade" class="form-control">
+                            <option value="">Loading grade levels...</option>
+                        </select>
+                    </div>
+                    <button id="admin-subject-create-submit" type="submit" class="btn btn-primary">Create Subject</button>
+                    <p id="admin-subject-create-status" class="status-banner" aria-live="polite"></p>
+                </form>
+            </article>
+
+            <article class="admin-panel admin-panel-wide" id="content-editor">
+                <div class="panel-header">
+                    <div>
+                        <h3>Content Editor</h3>
+                        <p>Maintain subject details, lesson copy, and quiz questions in one place.</p>
+                    </div>
+                    <a href="/adminrev.html" class="btn btn-outline panel-action">Review Assignments</a>
+                </div>
+
+                <div class="admin-editor-toolbar">
+                    <div class="form-group">
+                        <label for="admin-subject-select">Choose Subject</label>
+                        <select id="admin-subject-select" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="ai-tool-panel">
+                    <div>
+                        <h4>AI Quiz Generator</h4>
+                        <p>Generate a draft quiz for a topic, then review it before saving.</p>
+                    </div>
+                    <div class="ai-tool-grid">
+                        <div class="form-group">
+                            <label for="ai-quiz-topic">Topic</label>
+                            <input type="text" id="ai-quiz-topic" placeholder="Linear equations">
+                        </div>
+                        <div class="form-group">
+                            <label for="ai-quiz-count">Questions</label>
+                            <input type="number" id="ai-quiz-count" min="1" max="12" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label>Types</label>
+                            <div id="ai-question-types" class="inline-checkboxes">
+                                <label><input type="checkbox" value="multiple_choice" checked> Multiple choice</label>
+                                <label><input type="checkbox" value="true_false" checked> True / false</label>
+                                <label><input type="checkbox" value="short_answer"> Short answer</label>
+                            </div>
+                        </div>
+                        <button id="ai-generate-quiz-button" type="button" class="btn btn-outline">Generate Draft</button>
+                    </div>
+                </div>
+
+                <form id="admin-subject-editor-form" class="auth-form admin-editor-form">
+                    <div class="admin-editor-grid">
+                        <div class="form-group">
+                            <label for="admin-edit-name">Subject Name</label>
+                            <input type="text" id="admin-edit-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-edit-lesson-grade">Grade Label</label>
+                            <input type="text" id="admin-edit-lesson-grade" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin-edit-summary">Summary</label>
+                        <textarea id="admin-edit-summary" rows="3" required></textarea>
+                    </div>
+
+                    <div class="admin-editor-grid">
+                        <div class="form-group">
+                            <label for="admin-edit-lesson-title">Lesson Title</label>
+                            <input type="text" id="admin-edit-lesson-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-edit-lesson-image-label">Lesson Image Label</label>
+                            <input type="text" id="admin-edit-lesson-image-label" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin-edit-lesson-body">Lesson Paragraphs</label>
+                        <textarea id="admin-edit-lesson-body" rows="8" placeholder="Separate paragraphs with a blank line." required></textarea>
+                    </div>
+
+                    <div class="panel-header">
+                        <div>
+                            <h4>Quiz Questions</h4>
+                            <p>Every question should include at least two answer choices.</p>
+                        </div>
+                        <button id="admin-add-question" type="button" class="btn btn-outline panel-action">Add Question</button>
+                    </div>
+
+                    <div id="admin-quiz-editor" class="quiz-editor"></div>
+
+                    <button id="admin-subject-save" type="submit" class="btn btn-primary">Save Subject Content</button>
+                    <p id="admin-subject-editor-status" class="status-banner" aria-live="polite"></p>
+                </form>
+            </article>
+
+            <article class="admin-panel admin-panel-wide" id="reports">
+                <div class="panel-header">
+                    <div>
+                        <h3>Academic Reports</h3>
+                        <p>Monitor grade-level performance to support school decisions.</p>
+                    </div>
+                </div>
+                <div id="admin-report-list" class="admin-list"></div>
+            </article>
+
+            <article class="admin-panel admin-panel-wide" id="admin-ai-analytics">
+                <div class="panel-header">
+                    <div>
+                        <h3>AI Analytics and Recommendations</h3>
+                        <p>Summarized risks and next actions from current school performance data.</p>
+                    </div>
+                </div>
+                <div id="admin-ai-insight" class="ai-insight-panel"></div>
+            </article>
+        </section>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

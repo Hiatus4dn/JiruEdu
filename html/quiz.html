@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - JiruEdu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="quiz-page">
+    <header class="app-header">
+        <div class="header-left">
+            <a class="header-link" href="/subject.html">Subjects</a>
+        </div>
+        <h3 id="quiz-subject-title">Quiz</h3>
+        <div class="header-actions">
+            <button type="button" class="btn btn-outline header-button" data-logout>Logout</button>
+        </div>
+    </header>
+
+    <main class="quiz-container">
+        <form id="quiz-form" class="stack-lg"></form>
+        <p id="quiz-status" class="status-banner" aria-live="polite"></p>
+        <section id="quiz-feedback" class="stack-lg"></section>
+    </main>
+
+    <footer class="quiz-footer">
+        <button id="quiz-submit-button" type="submit" form="quiz-form" class="btn btn-primary btn-block">Submit Quiz</button>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>

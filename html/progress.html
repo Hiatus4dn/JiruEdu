@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Progress - JiruEdu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dashboard-page">
+    <header class="app-header">
+        <div class="header-left">
+            <h3>My Progress</h3>
+        </div>
+        <div class="header-actions">
+            <a class="header-link" href="/student_dashboard.html">Dashboard</a>
+            <button type="button" class="btn btn-outline header-button" data-logout>Logout</button>
+        </div>
+    </header>
+
+    <main class="progress-page">
+        <section class="progress-summary">
+            <h3>Overall Completion</h3>
+            <div class="progress-card">
+                <div class="progress-bar-container">
+                    <div id="progress-overall-bar" class="progress-bar" style="width: 0%"></div>
+                </div>
+                <p id="progress-overall-value">0%</p>
+                <p id="progress-summary-text">No activity yet.</p>
+            </div>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>Subject Performance</h4>
+            <div id="subject-stats"></div>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>Recent Scores</h4>
+            <ul id="recent-score-list" class="summary-list"></ul>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>Homework Summary</h4>
+            <div id="assignment-summary" class="summary-list"></div>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>Badges and Rewards</h4>
+            <div id="progress-badge-list" class="chip-row"></div>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>Improvement Areas</h4>
+            <ul id="improvement-area-list" class="summary-list"></ul>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>AI Analytics and Recommendations</h4>
+            <div id="student-ai-insight" class="ai-insight-panel"></div>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>Teacher Support Notes</h4>
+            <ul id="teacher-note-list" class="summary-list"></ul>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>Upcoming Scheduled Quizzes</h4>
+            <ul id="upcoming-quiz-list" class="summary-list"></ul>
+        </section>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

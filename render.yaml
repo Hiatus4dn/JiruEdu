@@ -1,0 +1,22 @@
+services:
+  - type: web
+    runtime: docker
+    name: jiruedu
+    plan: starter
+    region: singapore
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: OPEN_BROWSER
+        value: "false"
+      - key: PORT
+        value: "3000"
+      - key: DATA_DIR
+        value: /data
+      - key: AUTH_SECRET
+        generateValue: true
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1

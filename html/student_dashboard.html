@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - JiruEdu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dashboard-page">
+    <header class="app-header">
+        <div class="header-left">
+            <h3>JiruEdu</h3>
+        </div>
+        <div class="header-actions">
+            <div class="user-avatar" data-session-avatar>JD</div>
+            <button type="button" class="btn btn-outline header-button" data-logout>Logout</button>
+        </div>
+    </header>
+
+    <main class="dashboard-content">
+        <section class="welcome-section">
+            <h2>Hello, <span id="dashboard-name" data-session-name>Student</span></h2>
+            <p id="dashboard-track">Track your lessons, quizzes, and homework in one place.</p>
+        </section>
+
+        <section class="progress-summary">
+            <h3>Overall Progress</h3>
+            <div class="progress-card">
+                <div class="progress-bar-container">
+                    <div id="overall-progress-bar" class="progress-bar" style="width: 0%"></div>
+                </div>
+                <p id="overall-progress-value">0%</p>
+            </div>
+        </section>
+
+        <section class="stat-grid">
+            <article class="stat-card">
+                <h4>Latest Quiz Score</h4>
+                <strong id="latest-score-value">No quiz yet</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Homework Queue</h4>
+                <strong id="assignment-status-value">0 pending</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Current User</h4>
+                <strong data-session-username>student</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Grade Level</h4>
+                <strong id="dashboard-grade-level">Grade 10</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Total Points</h4>
+                <strong id="dashboard-points-value">0 pts</strong>
+            </article>
+            <article class="stat-card">
+                <h4>Badges Earned</h4>
+                <strong id="dashboard-badges-count">0</strong>
+            </article>
+        </section>
+
+        <section class="progress-summary">
+            <h3>Subject Snapshot</h3>
+            <ul id="dashboard-subject-list" class="summary-list"></ul>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>Badges</h4>
+            <div id="dashboard-badge-list" class="chip-row"></div>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>Upcoming Quiz Schedule</h4>
+            <ul id="dashboard-upcoming-list" class="summary-list"></ul>
+        </section>
+
+        <section class="chart-placeholder">
+            <h4>AI Recommendations</h4>
+            <div id="dashboard-ai-insight" class="ai-insight-panel"></div>
+        </section>
+
+        <section class="action-grid">
+            <a href="/subject.html" class="action-card">
+                <div class="icon-box blue">LS</div>
+                <h4>Study Lessons</h4>
+                <p>Open subjects and lessons</p>
+            </a>
+            <a href="/quiz.html" class="action-card">
+                <div class="icon-box green">QZ</div>
+                <h4>Take Quiz</h4>
+                <p>Check what you remember</p>
+            </a>
+            <a href="/homework_upload.html" class="action-card">
+                <div class="icon-box orange">HW</div>
+                <h4>Upload Homework</h4>
+                <p>Submit work for review</p>
+            </a>
+            <a href="/progress.html" class="action-card">
+                <div class="icon-box purple">PR</div>
+                <h4>View Progress</h4>
+                <p>See recent results</p>
+            </a>
+        </section>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>
